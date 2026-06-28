@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uddesh Kumar Gupta | Premium Finance Portfolio</title>
+  <style>
+    :root {
+      --bg: #07101d;
+      --bg-2: #0b1628;
+      --panel: rgba(10, 20, 37, 0.86);
+      --panel-2: rgba(255,255,255,0.05);
+      --line: rgba(148,163,184,0.14);
+      --text: #e8f0ff;
+      --muted: #9fb2d1;
+      --white: #ffffff;
+      --blue: #60a5fa;
+      --cyan: #22d3ee;
+      --green: #34d399;
+      --gold: #fbbf24;
+      --rose: #fb7185;
+      --shadow: 0 28px 80px rgba(2, 8, 23, 0.5);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(34,211,238,0.12), transparent 22%),
+        radial-gradient(circle at 90% 8%, rgba(96,165,250,0.16), transparent 20%),
+        radial-gradient(circle at 80% 80%, rgba(52,211,153,0.10), transparent 20%),
+        linear-gradient(135deg, var(--bg) 0%, #081425 45%, var(--bg-2) 100%);
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 28px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 16, 29, 0.76);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .brand {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .nav a {
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 13px;
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+    }
+    .nav a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-top: 28px;
+      padding: 42px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(96,165,250,0.20), rgba(34,211,238,0.10) 35%, rgba(52,211,153,0.10) 100%),
+        rgba(10,20,37,0.9);
+      box-shadow: var(--shadow);
+    }
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(8px);
+      opacity: 0.55;
+    }
+    .hero::before {
+      width: 280px;
+      height: 280px;
+      top: -100px;
+      right: -80px;
+      background: radial-gradient(circle, rgba(34,211,238,0.30), transparent 65%);
+    }
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      bottom: -80px;
+      left: -70px;
+      background: radial-gradient(circle, rgba(52,211,153,0.24), transparent 65%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: start;
+      position: relative;
+      z-index: 2;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #dff8ff;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+    }
+    h1 {
+      margin: 18px 0 12px;
+      font-size: 58px;
+      line-height: 0.98;
+      color: var(--white);
+      max-width: 780px;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      color: #d7e6fb;
+      max-width: 850px;
+      margin-bottom: 22px;
+    }
+    .contact-row, .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .pill, .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 15px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-size: 14px;
+    }
+    .btn {
+      font-weight: 800;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary {
+      border: none;
+      color: white;
+      background: linear-gradient(135deg, #38bdf8, #2563eb);
+      box-shadow: 0 12px 34px rgba(37,99,235,0.25);
+    }
+    .btn.secondary {
+      border: none;
+      color: white;
+      background: linear-gradient(135deg, #10b981, #22c55e);
+      box-shadow: 0 12px 34px rgba(16,185,129,0.20);
+    }
+    .btn.dark {
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+    }
+    .cta-row { margin-top: 16px; }
+
+    .recruiter-card {
+      border-radius: 24px;
+      padding: 24px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+    .recruiter-card h3 {
+      margin: 0 0 10px;
+      color: var(--white);
+      font-size: 20px;
+    }
+    .recruiter-card p {
+      margin: 0 0 14px;
+      color: #d9e6fb;
+    }
+    .mini-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .mini-list li { margin: 8px 0; }
+
+    .metric-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 2;
+    }
+    .metric {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .metric .num {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .metric .label {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      margin-top: 24px;
+      padding: 30px;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--line);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      box-shadow: 0 0 0 6px rgba(34,211,238,0.08);
+      flex: 0 0 auto;
+    }
+    .section-title h2 {
+      margin: 0;
+      font-size: 28px;
+      color: var(--white);
+    }
+    .section-lead {
+      color: var(--muted);
+      margin: -4px 0 18px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 20px;
+    }
+    .panel {
+      padding: 22px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      height: 100%;
+    }
+    .panel h3 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      color: var(--white);
+    }
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .skill {
+      padding: 10px 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      color: #dff6ff;
+      background: rgba(96,165,250,0.10);
+      border: 1px solid rgba(96,165,250,0.22);
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .value-card {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .value-card .icon {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .value-card h3 {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-size: 18px;
+    }
+    .value-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 26px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      box-shadow: 0 0 0 6px rgba(34,211,238,0.08);
+    }
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 24px;
+      bottom: -28px;
+      width: 1px;
+      background: rgba(255,255,255,0.10);
+    }
+    .timeline-item:last-child::after { display: none; }
+    .role-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: baseline;
+    }
+    .role-row h3 {
+      margin: 0;
+      color: var(--white);
+      font-size: 20px;
+    }
+    .role-row .date {
+      font-size: 14px;
+      font-weight: 800;
+      color: #c7d7f0;
+    }
+    .company {
+      color: var(--blue);
+      font-weight: 800;
+      margin: 4px 0 8px;
+    }
+    ul.clean {
+      margin: 10px 0 0 18px;
+      padding: 0;
+    }
+    ul.clean li { margin: 7px 0; }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 26px;
+      padding: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(96,165,250,0.08), transparent 55%, rgba(52,211,153,0.06));
+      pointer-events: none;
+    }
+    .project-content { position: relative; z-index: 2; }
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .project-title {
+      margin: 0;
+      color: var(--white);
+      font-size: 22px;
+    }
+    .project-sub {
+      color: #c7ebff;
+      font-size: 14px;
+      font-weight: 800;
+      margin-top: 6px;
+    }
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #e6fbff;
+      background: rgba(34,211,238,0.12);
+      border: 1px solid rgba(34,211,238,0.20);
+    }
+    .project-card p {
+      margin: 0 0 12px;
+      color: #dce7fb;
+    }
+    .block {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .block h4 {
+      margin: 0 0 10px;
+      color: var(--white);
+      font-size: 15px;
+    }
+    .block ul {
+      margin: 0 0 0 18px;
+      padding: 0;
+    }
+    .block li { margin: 6px 0; }
+    .callout {
+      margin-top: 14px;
+      padding: 15px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+    }
+    .callout.insight {
+      background: rgba(251,191,36,0.08);
+      border-left: 3px solid var(--gold);
+      color: #f7ebc5;
+    }
+    .callout.learning {
+      background: rgba(251,113,133,0.08);
+      border-left: 3px solid var(--rose);
+      color: #ffd8df;
+    }
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .file-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .info-card {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .info-card h3 {
+      margin: 0 0 10px;
+      color: var(--white);
+      font-size: 18px;
+    }
+    .info-item {
+      padding: 12px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .info-item:first-child { border-top: none; padding-top: 0; }
+
+    .final-cta {
+      margin-top: 24px;
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background:
+        linear-gradient(135deg, rgba(37,99,235,0.18), rgba(16,185,129,0.14)),
+        rgba(255,255,255,0.04);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+    .final-cta h2 {
+      margin: 0 0 8px;
+      color: var(--white);
+      font-size: 28px;
+    }
+    .final-cta p {
+      margin: 0;
+      color: #d9e5f8;
+      max-width: 760px;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer {
+      margin: 24px 0 10px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .two-col,
+      .projects-grid,
+      .grid-3,
+      .value-grid,
+      .metric-grid,
+      .final-cta { grid-template-columns: 1fr 1fr; }
+      .final-cta { align-items: start; }
+      .cta-actions { justify-content: flex-start; }
+    }
+    @media (max-width: 820px) {
+      .container { padding: 18px; }
+      .topbar-inner { padding: 12px 18px; }
+      .nav { display: none; }
+      .hero { padding: 28px; }
+      h1 { font-size: 40px; }
+      .hero-grid,
+      .two-col,
+      .projects-grid,
+      .grid-3,
+      .value-grid,
+      .metric-grid,
+      .final-cta { grid-template-columns: 1fr; }
+      .section { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Uddesh Kumar Gupta</div>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#why-hire">Why Hire Me</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="hero" id="contact">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Premium Portfolio • Finance • Valuation • Analytics</span>
+          <h1>Finance-driven analysis with strong business and execution depth.</h1>
+          <p class="hero-subtitle">
+            I’m <strong>Uddesh Kumar Gupta</strong>, a Finance &amp; Analytics undergraduate with hands-on exposure to financial modelling, valuation, MIS reporting, operational KPI tracking, business analysis, and equity-research style project work. I focus on turning data, financial statements, and performance trends into structured insights that support smarter decisions.
+          </p>
+
+          <div class="contact-row">
+            <a class="pill" href="tel:+919905040021">📞 +91-9905040021</a>
+            <a class="pill" href="mailto:0uddeshgupta2222@gmail.com">✉️ 0uddeshgupta2222@gmail.com</a>
+            <a class="pill" href="https://linkedin.com/in/uddesh-gupta" target="_blank">🔗 linkedin.com/in/uddesh-gupta</a>
+            <span class="pill">📍 Jaipur, Rajasthan</span>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" href="https://linkedin.com/in/uddesh-gupta" target="_blank">View LinkedIn</a>
+            <a class="btn secondary" href="https://drive.google.com/drive/folders/1bm_efW3hX1cCj5HdGdao9frXKuZngrba" target="_blank">Open Google Drive Projects</a>
+            <a class="btn dark" href="mailto:0uddeshgupta2222@gmail.com">Contact for Opportunities</a>
+          </div>
+        </div>
+
+        <div class="recruiter-card">
+          <h3>Recruiter Quick View</h3>
+          <p>Candidate suited for analyst-track opportunities across finance, valuation, FP&amp;A, research, MIS, and business analytics.</p>
+          <ul class="mini-list">
+            <li>Strong project exposure in DCF, scenario analysis, and three-statement thinking</li>
+            <li>Practical business experience in KPI dashboards, cost control, and reporting</li>
+            <li>Comfortable with Excel, Power BI, data interpretation, and management presentation</li>
+            <li>Combines finance concepts with execution discipline and business context</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="num">500+</div>
+          <div class="label">finance and analyst job descriptions analysed</div>
+        </div>
+        <div class="metric">
+          <div class="num">15%</div>
+          <div class="label">operating expense reduction achieved through analysis-led actions</div>
+        </div>
+        <div class="metric">
+          <div class="num">12% → 7%</div>
+          <div class="label">RTO reduction via KPI tracking and vendor process improvements</div>
+        </div>
+        <div class="metric">
+          <div class="num">50+</div>
+          <div class="label">B2B clients handled with follow-up and reconciliation discipline</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-title"><span class="dot"></span><h2>About Me</h2></div>
+      <p class="section-lead">A practical finance profile shaped by modelling, operations exposure, and analytical project work.</p>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Professional Summary</h3>
+          <p>
+            My work sits at the intersection of finance, analytics, and operational problem-solving. Through internships and project-based learning, I have built exposure to financial reporting, KPI review, valuation frameworks, earnings analysis, dashboarding, and structured business recommendations.
+          </p>
+          <p>
+            I enjoy understanding how business performance shows up in numbers — whether through margins, cash flow, costs, growth assumptions, or operational metrics — and then translating that into clear, decision-useful analysis.
+          </p>
+        </div>
+        <div class="panel">
+          <h3>Skills &amp; Tools</h3>
+          <div class="skills-wrap">
+            <span class="skill">Financial Modelling</span>
+            <span class="skill">DCF Valuation</span>
+            <span class="skill">WACC Estimation</span>
+            <span class="skill">Relative Valuation</span>
+            <span class="skill">Scenario Analysis</span>
+            <span class="skill">Sensitivity Analysis</span>
+            <span class="skill">Balance Sheet Analysis</span>
+            <span class="skill">Cash Flow Analysis</span>
+            <span class="skill">P&amp;L Analysis</span>
+            <span class="skill">Variance Analysis</span>
+            <span class="skill">MIS Reporting</span>
+            <span class="skill">KPI Tracking</span>
+            <span class="skill">Excel</span>
+            <span class="skill">Power BI</span>
+            <span class="skill">Dashboarding</span>
+            <span class="skill">Equity Research</span>
+            <span class="skill">Market Research</span>
+            <span class="skill">Data Analysis</span>
+            <span class="skill">Stakeholder Reporting</span>
+            <span class="skill">Vendor Management</span>
+            <span class="skill">Reconciliation</span>
+            <span class="skill">Business Communication</span>
+            <span class="skill">Problem Solving</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-hire">
+      <div class="section-title"><span class="dot"></span><h2>Why Hire Me</h2></div>
+      <p class="section-lead">I can contribute as someone who understands both numbers and the business context behind them.</p>
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="icon">📊</div>
+          <h3>Analytical Thinking</h3>
+          <p>I break down business situations into measurable financial and operational drivers, then structure the analysis clearly.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">💼</div>
+          <h3>Practical Finance Exposure</h3>
+          <p>I have worked on valuation, reporting, KPI dashboards, cost review, and business-facing recommendations — not just academic exercises.</p>
+        </div>
+        <div class="value-card">
+          <div class="icon">⚙️</div>
+          <h3>Execution Orientation</h3>
+          <p>I am comfortable supporting real operational improvement through structured tracking, process discipline, and data-backed follow-through.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-title"><span class="dot"></span><h2>Experience</h2></div>
+
+      <div class="timeline-item">
+        <div class="role-row">
+          <h3>Finance Research Intern</h3>
+          <div class="date">Sep 2025 – Nov 2025</div>
+        </div>
+        <div class="company">Unstop</div>
+        <ul class="clean">
+          <li>Analysed 500+ entry-level finance and analyst job descriptions to identify hiring trends, core skill demand, and compensation patterns.</li>
+          <li>Built structured datasets using Glassdoor and Ambition Box data to improve internal research quality and comparability.</li>
+          <li>Contributed to finance and consulting-focused market research reports with stronger role mapping and insight clarity.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="role-row">
+          <h3>Finance &amp; Operations Intern</h3>
+          <div class="date">May 2025 – Jul 2025</div>
+        </div>
+        <div class="company">Bfast Services (Logistics / Quick Commerce)</div>
+        <ul class="clean">
+          <li>Monitored SLAs and operational KPIs using real-time MIS dashboards to support reporting cadence for leadership reviews.</li>
+          <li>Reduced RTO rate from 12% to 7% through vendor management protocols and KPI-based operational tracking.</li>
+          <li>Analysed financial and process-level data to present structured improvement recommendations directly to the Co-Founder.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="role-row">
+          <h3>Finance &amp; Operations Analyst</h3>
+          <div class="date">May 2024 – Apr 2025</div>
+        </div>
+        <div class="company">Broshni Ayurveda Technology Pvt. Ltd.</div>
+        <ul class="clean">
+          <li>Reduced operating expenses by 15% by identifying procurement and fulfilment inefficiencies through variance analysis and targeted cost actions.</li>
+          <li>Prepared financial reports and balance sheet analysis for senior management to support performance review and strategic discussion.</li>
+          <li>Managed 50+ B2B clients through proactive follow-ups and reconciliation, improving cash flow discipline and relationship continuity.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-title"><span class="dot"></span><h2>Featured Projects</h2></div>
+      <p class="section-lead">Selected work that reflects my finance, valuation, dashboarding, and business analysis capability.</p>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-content">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">Varun Beverages Ltd.</h3>
+                <div class="project-sub">Financial Model &amp; Valuation • Excel • DCF • Scenario Analysis</div>
+              </div>
+              <span class="badge">Premium Case</span>
+            </div>
+            <p>Built a structured valuation model to estimate business value, test assumptions, and understand how operational performance translates into investor value.</p>
+            <div class="block">
+              <h4>Key Work Done</h4>
+              <ul>
+                <li>Built an integrated three-statement framework covering income statement, balance sheet, and cash flow forecasting.</li>
+                <li>Estimated WACC and performed DCF valuation to derive intrinsic value under disciplined assumptions.</li>
+                <li>Added relative valuation thinking to benchmark reasonability of outputs and avoid one-method dependence.</li>
+                <li>Created base, bull, and bear scenarios to study how revenue growth, margins, and cash generation affect valuation range.</li>
+              </ul>
+            </div>
+            <div class="callout insight"><strong>Key insight:</strong> Valuation is highly sensitive to operating assumptions, so a good model must connect business drivers, cash flow quality, and capital costs logically.</div>
+            <div class="callout learning"><strong>What I learnt:</strong> I learnt how small shifts in growth, discount rate, and terminal assumptions can significantly change enterprise value, making assumption discipline a core skill.</div>
+            <div class="link-row">
+              <a class="file-link" href="https://www.genspark.ai/api/files/s/pqcqcvtD" target="_blank">Open Varun Beverages File</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">Aurobindo Pharma Ltd.</h3>
+                <div class="project-sub">Financial Model &amp; Valuation • Excel • DCF • Scenario Analysis</div>
+              </div>
+              <span class="badge">Valuation Build</span>
+            </div>
+            <p>Developed a valuation-focused pharma model to assess business performance, scenario outcomes, and the financial strength behind assumptions.</p>
+            <div class="block">
+              <h4>Key Work Done</h4>
+              <ul>
+                <li>Modelled major statement line items to build a connected view of revenue, costs, profitability, and cash conversion.</li>
+                <li>Applied DCF and scenario analysis to estimate value range under multiple performance cases.</li>
+                <li>Reviewed financial statement behavior to make assumptions more grounded in business performance rather than purely formula-driven.</li>
+                <li>Structured outputs to highlight key drivers, downside risks, and sensitivity of value to operating performance.</li>
+              </ul>
+            </div>
+            <div class="callout insight"><strong>Key insight:</strong> In valuation work, business quality and cash conversion matter as much as growth, especially when judging long-term sustainability.</div>
+            <div class="callout learning"><strong>What I learnt:</strong> I learnt to link statement analysis, business understanding, and valuation logic together instead of treating them as separate finance exercises.</div>
+            <div class="link-row">
+              <a class="file-link" href="https://www.genspark.ai/api/files/s/Y2fLeMhz" target="_blank">Open Aurobindo Pharma File</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">Zomato</h3>
+                <div class="project-sub">Power BI Dashboard • Revenue • Ratings • Order Trends</div>
+              </div>
+              <span class="badge">Dashboard Analytics</span>
+            </div>
+            <p>Designed an interactive Power BI dashboard to transform city-level performance data into clear, visual, decision-friendly insights.</p>
+            <div class="block">
+              <h4>Key Work Done</h4>
+              <ul>
+                <li>Built a city-wise dashboard to track revenue, ratings, and order patterns across locations.</li>
+                <li>Used visual segmentation to make business comparisons easier and help identify stronger or weaker operating clusters.</li>
+                <li>Structured data storytelling so users can move quickly from raw numbers to meaningful trends and performance interpretation.</li>
+                <li>Focused on management-friendly reporting design that improves usability of business data for review discussions.</li>
+              </ul>
+            </div>
+            <div class="callout insight"><strong>Key insight:</strong> A strong dashboard is not just visually good; it must help users answer business questions faster and compare performance with clarity.</div>
+            <div class="callout learning"><strong>What I learnt:</strong> I learnt how metric selection, layout design, and trend visibility together make dashboards more useful for decision support.</div>
+            <div class="link-row">
+              <a class="file-link" href="https://www.genspark.ai/api/files/s/lsYnmKX1" target="_blank">Open Zomato Dashboard File</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-content">
+            <div class="project-head">
+              <div>
+                <h3 class="project-title">ITC Limited</h3>
+                <div class="project-sub">5-Year Earnings Quality Analysis • Equity Research</div>
+              </div>
+              <span class="badge">Research Lens</span>
+            </div>
+            <p>Conducted a five-year earnings quality review to evaluate how sustainable, normalized, and decision-relevant reported earnings actually are.</p>
+            <div class="block">
+              <h4>Key Work Done</h4>
+              <ul>
+                <li>Analysed FY21–FY25 EPS normalization to distinguish recurring earning power from temporary or distorted effects.</li>
+                <li>Reviewed sales volatility and business consistency to judge the strength of underlying earnings drivers.</li>
+                <li>Examined capital allocation efficiency and the hotels demerger impact to improve interpretation of core earnings quality.</li>
+                <li>Presented findings through an equity-research style framework focused on quality of earnings, not only growth.</li>
+              </ul>
+            </div>
+            <div class="callout insight"><strong>Key insight:</strong> Headline EPS alone can be misleading unless it is tested for sustainability, normalization, and strategic context.</div>
+            <div class="callout learning"><strong>What I learnt:</strong> I learnt to evaluate earnings quality more deeply through repeatability, volatility review, and capital allocation context rather than relying only on reported growth.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="section-title"><span class="dot"></span><h2>Education, Certifications &amp; Recognition</h2></div>
+      <div class="grid-3">
+        <div class="info-card">
+          <h3>Education</h3>
+          <div class="info-item">
+            <strong style="color:#fff;">BBA – Finance &amp; Analytics</strong><br/>
+            Suresh Gyan Vihar University, Jaipur<br/>
+            <span style="color:var(--muted);">2023 – 2026 • CGPA: 8.96</span>
+          </div>
+          <div class="info-item">
+            <strong style="color:#fff;">Relevant Coursework</strong><br/>
+            <span style="color:var(--muted);">Financial Risk Management, Corporate Finance, Cost Accounting, Financial Modelling</span>
+          </div>
+          <div class="info-item">
+            <strong style="color:#fff;">Academic Scores</strong><br/>
+            <span style="color:var(--muted);">Class 12: 83% • Class 10: 88% • Kendriya Vidyalaya</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Certifications</h3>
+          <div class="info-item">
+            <strong style="color:#fff;">Investment Banking Job Simulation – JPMorgan Chase (Forage)</strong><br/>
+            <span style="color:var(--muted);">DCF Modelling, M&amp;A, Financial Planning • Mar 2024</span>
+          </div>
+          <div class="info-item">
+            <strong style="color:#fff;">Accounting Fundamentals – Corporate Finance Institute</strong><br/>
+            <span style="color:var(--muted);">Income Statement, Balance Sheet, Cash Flow • Jun 2024</span>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h3>Recognition</h3>
+          <div class="info-item">
+            <span style="color:var(--muted);">Received recommendation / recognition from a KPMG Associate Director, Bfast Co-Founder, and mentor associated with iStart Rajasthan / Bahamashah Techno Hub Jaipur.</span>
+          </div>
+          <div class="info-item">
+            <span style="color:var(--muted);">Earned a Certificate of Appreciation for leading end-to-end execution of a university-wide event with 300+ participants.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div>
+        <h2>Open to finance, valuation, research & analytics opportunities</h2>
+        <p>
+          I am looking to contribute in roles where I can apply finance fundamentals, analytical thinking, and structured execution across modelling, reporting, valuation, research, and performance analysis.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn primary" href="mailto:0uddeshgupta2222@gmail.com">Email Me</a>
+        <a class="btn secondary" href="https://drive.google.com/drive/folders/1bm_efW3hX1cCj5HdGdao9frXKuZngrba" target="_blank">Project Drive</a>
+      </div>
+    </section>
+
+    <div class="footer">
+      Premium portfolio crafted for analyst-track roles across finance, equity research, FP&amp;A, MIS, valuation, and business analytics.
+    </div>
+  </div>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
